@@ -21,11 +21,11 @@ public class JogoService {
 
     public ResponseEntity<Object> criarJogo(Jogo jogo){
 
-        if (jogo.getTime1().getCorCamisa().equals(jogo.getTime2().getCorCamisa())){
-            return new ResponseEntity<>(new Mensagem("Camisa dos dois times iguais."), HttpStatus.BAD_REQUEST);
-        }
+
         if (jogo.getTime1().getNomeTime().equals(jogo.getTime2().getNomeTime())){
             return new ResponseEntity<>(new Mensagem("Nomes dos times são iguais."), HttpStatus.BAD_REQUEST);
+        } if (jogo.getTime1().getCorCamisa().equals(jogo.getTime2().getCorCamisa())){
+            return new ResponseEntity<>(new Mensagem("Camisa dos dois times iguais."), HttpStatus.BAD_REQUEST);
         }
         jogo.getTime1().setNumeroGol(0);
         jogo.getTime2().setNumeroGol(0);
@@ -73,7 +73,7 @@ public class JogoService {
         }else {
             return new ResponseEntity<Object>(new Mensagem("Jogo não existe."), HttpStatus.BAD_REQUEST);
         }
-    } 
+    }
 }
 
 
