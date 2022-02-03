@@ -51,9 +51,7 @@ public class JogoService {
         if (!jogoExiste.isPresent()){
             return new ResponseEntity<Object>(new Mensagem("Jogo nao existe"), HttpStatus.BAD_REQUEST);
         }
-//        if ((jogoExiste.get().getTime1().getNumeroGol()+jogoExiste.get().getTime2().getNumeroGol())==0){
-//            return new ResponseEntity<Object>(new Mensagem("Placar inalterado, portanto, atualizacao invalida"), HttpStatus.NOT_ACCEPTABLE);
-//        }
+
         if ((golTime1+golTime2)==0){
             return new ResponseEntity<Object>(new Mensagem("Placar inalterado, portanto, atualizacao invalida"), HttpStatus.NOT_ACCEPTABLE);
         }
@@ -75,22 +73,7 @@ public class JogoService {
         }else {
             return new ResponseEntity<Object>(new Mensagem("Jogo não existe."), HttpStatus.BAD_REQUEST);
         }
-    }
-
-    public Jogo atualizacaoJogo(int id, Jogo jogo){
-        Jogo jogoAtualizado = new Jogo();
-        jogoAtualizado.setId(id);
-        jogoAtualizado.setData(jogo.getData());
-        jogoAtualizado.setLocal(jogo.getLocal());
-        jogoAtualizado.getTime1().setNomeTime(jogo.getTime1().getNomeTime());
-        jogoAtualizado.getTime2().setNomeTime(jogo.getTime2().getNomeTime());
-        jogoAtualizado.getTime1().setCorCamisa(jogo.getTime1().getCorCamisa());
-        jogoAtualizado.getTime2().setCorCamisa(jogo.getTime2().getCorCamisa());
-        jogoAtualizado.getTime1().setNumeroGol(jogo.getTime1().getNumeroGol());
-        jogoAtualizado.getTime2().setNumeroGol(jogo.getTime2().getNumeroGol());
-
-        return jogoAtualizado;
-    }
+    } 
 }
 
 
